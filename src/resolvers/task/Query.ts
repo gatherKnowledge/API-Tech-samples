@@ -1,33 +1,8 @@
-import { extendType, idArg } from 'nexus'
-import { TASKS } from './'
+import { prismaExtendType } from 'nexus-prisma'
 
-export const TaskQueries = extendType({
+export const TaskQueries = prismaExtendType({
   type: 'Query',
   definition(t) {
-    t.field('task', {
-      type: 'Task',
-      args: {
-        id: idArg({
-          required: true,
-        }),
-      },
-      resolve: (_parent, args) => {
-        const task = TASKS.find((task) => task.id === args.id)
-
-        if (task) {
-          return task
-
-        } else {
-          throw new Error(`${args.id}를 가진 Task를 찾을 수 없습니다`)
-        }
-      },
-    })
-
-    t.list.field('tasks', {
-      type: 'Task',
-      resolve: () => {
-        return TASKS
-      },
-    })
+    t.prismaFields(['task', 'tasks'])
   },
 })
