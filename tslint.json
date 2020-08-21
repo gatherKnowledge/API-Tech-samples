@@ -11,7 +11,7 @@
     ]
   },
   "rules": {
-    "semicolon": [true, "never"],
+    "semicolon": [true, "always"],
     "quotemark": [true, "single"],
     "indent": [true, "spaces", 2],
     "object-literal-sort-keys": false,
@@ -27,6 +27,7 @@
     "jsx-no-multiline-js": false,
     "member-ordering": false,
     "no-var-requires": false,
-    "interface-name": false
+    "interface-name": false,
+    "trailing-comma": false
   }
 }
